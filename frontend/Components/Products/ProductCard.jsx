@@ -1,5 +1,6 @@
 import AddToCartButton from 'Components/UI/AddToCartButton';
 import BuyNow from 'Components/UI/BuyNow';
+import ViewHereBtn from 'Components/UI/ViewHereBtn';
 import Image from 'next/image'
 import Link from 'next/link'
 import { useDispatch } from 'react-redux';
@@ -10,7 +11,7 @@ const ProductCard = ({ product }) => {
     const moveToCart = () => dispatch(addToCart(1))
     const { slug } = product
     const PRODUCT_URL = 'products/' + slug
-    console.log('product::', product);
+
     return (
         <div className="max-w-lg mx-auto">
             <div className="bg-white shadow-md border border-gray-200 rounded-lg max-w-full mb-5">
@@ -40,11 +41,12 @@ const ProductCard = ({ product }) => {
                     <p className='text-bold text-yellow-700 font-extrabold text-xl pb-1'>
                         <span>&#8377; </span>
                         {product?.price}
-                        <span className="text-xs text-green-600"> / OFF 0% </span>
+                        <span className="text-xs text-green-600"> {product.regular_price}</span>
                     </p>
                     <div className="px-5 py-2 flex flex-shrink grid-column justify-evenly gap-2 items-center">
                         <AddToCartButton moveToCart={moveToCart} />
                         <BuyNow />
+                        <ViewHereBtn name={product.name} image={product.product_images[0].image} price={product.regular_price}  />
                     </div>
                 </div>
             </div>

@@ -1,17 +1,22 @@
 import React, { useState } from "react";
+import { useRouter } from "next/router";
 
 const Quickreview4 = () => {
     const [color, setColor] = useState("White");
     const [size, setSize] = useState("");
     const [menu, setMenu] = useState(true);
     const [slide, setSlide] = useState(true);
+    const router =useRouter()
+
+    const {name , image ,price}= router.query
+    console.log(name , image , price )
+
 
     const slideToggle = () => setSlide(!slide);
 
     const getColor = (value) => {
         setColor(value);
     };
-
     const getSize = (value) => {
         setSize(value);
     };
@@ -29,14 +34,14 @@ const Quickreview4 = () => {
                                 <div className="slider">
                                     <div className="slide-ana flex flex-shrink-0">
                                         <div className={"flex flex-shrink-0 transform " + (slide ? "translate-x-0" : "-translate-x-full")}>
-                                            <img className=" lg:block hidden w-full h-full object-center object-cover" src="https://i.ibb.co/wBknrzK/pexels-monstera-6311641-1-2.png" alt="A girl posing front" />
-                                            <img className=" hidden md:block lg:hidden w-full h-full object-center object-cover" src="https://i.ibb.co/JqhZhhp/pexels-monstera-6311641-1-3.png" alt="A girl posing front" />
-                                            <img className=" block md:hidden w-full h-full object-center object-cover" src="https://i.ibb.co/FXb2RfJ/pexels-dominika-roseclay-5462562-1.png" alt="A girl posing front" />
+                                            <img className=" lg:block hidden w-full h-full object-center object-cover" src={image} alt="A girl posing front" />
+                                            <img className=" hidden md:block lg:hidden w-full h-full object-center object-cover" src={image}  alt="A girl posing front" />
+                                            <img className=" block md:hidden w-full h-full object-center object-cover" src={image}  alt="A girl posing front" />
                                         </div>
                                         <div className={"flex flex-shrink-0 transform " + (slide ? "translate-x-full" : "translate-x-0")}>
-                                            <img className=" lg:block hidden w-full h-full object-center object-cover" src="https://i.ibb.co/FwRy0WL/pexels-monstera-6311575-2-1.png" alt="A girl posing Back" />
-                                            <img className=" hidden md:block lg:hidden w-full h-full object-center object-cover" src="https://i.ibb.co/k0bJRQk/pexels-monstera-6311575-3-1.png" alt="A girl posing Back" />
-                                            <img className=" block md:hidden w-full h-full object-center object-cover" src="https://i.ibb.co/0f1gRTt/pexels-monstera-6311575-4.png" alt="A girl posing Back" />
+                                            <img className=" lg:block hidden w-full h-full object-center object-cover" src={image} alt="A girl posing Back" />
+                                            <img className=" hidden md:block lg:hidden w-full h-full object-center object-cover" src={image}  alt="A girl posing Back" />
+                                            <img className=" block md:hidden w-full h-full object-center object-cover" src={image} alt="A girl posing Back" />
                                         </div>
                                     </div>
                                 </div>
@@ -57,9 +62,9 @@ const Quickreview4 = () => {
                             </div>
                         </div>
                         <div className="mt-6 md:mt-8 lg:mt-0 flex justify-start items-start w-full flex-col space-y-6">
-                            <h2 className=" lg:text-2xl text-xl lg:leading-6 leading-5 text-gray-800 font-semibold">Plain White Tshirt</h2>
+                            <h2 className=" lg:text-2xl text-xl lg:leading-6 leading-5 text-gray-800 font-semibold">{name}</h2>
                             <div className=" flex justify-start items-center mt-4">
-                                <p className="font-normal text-lg leading-6 text-gray-600 mr-4">$190</p>
+                                <p className="font-normal text-lg leading-6 text-gray-600 mr-4">${price}</p>
                                 <div className="cursor-pointer flex space-x-2 mr-3">
                                     <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <g>
