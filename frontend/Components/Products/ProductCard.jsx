@@ -15,7 +15,10 @@ const ProductCard = ({ product }) => {
     return (
         <div className="max-w-lg mx-auto">
             <div className="bg-white shadow-md border border-gray-200 rounded-lg max-w-full mb-5">
-                <Link href={PRODUCT_URL}>
+                <Link  href={{
+                pathname: PRODUCT_URL, 
+                query:{ id : product.id},
+              }} >
                     <a >
                         {product.product_images ? <Image
                             width="100%" height="100%" layout="responsive"

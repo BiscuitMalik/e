@@ -12,6 +12,9 @@ class ProductSpecificationInline(admin.TabularInline):
     model = ProductSpecification
 
 
+class ProductAttributesInline(admin.TabularInline):
+    model = ProductAttributes
+
 @admin.register(ProductType)
 class ProductTypeAdmin(admin.ModelAdmin):
     inlines = [
@@ -32,4 +35,5 @@ class ProductAdmin(admin.ModelAdmin):
     inlines = [
         ProductSpecificationValueInline,
         ProductImageInline,
+        ProductAttributesInline,
     ]

@@ -68,15 +68,21 @@ const testData = {
 }
 
 const ProductDetail = () => {
-    const { query: { slug } } = useRouter()
-    console.log('Here::', slug);
+    // const { query: { slug } } = useRouter()
+    const router = useRouter()
+    const {id}= router.query
+    // console.log('Here::', slug);
 
-    useEffect(() => {
-        // Find Product Info Via Slug
-    }, [slug])
+    // useEffect(() => {
+    //     // Find Product Info Via Slug
+    // }, [slug])
+    
+    // console.log("pro")
+    // console.log(id)
+
 
     return (
-        <ProductDetailPage product={testData} />
+        <ProductDetailPage productID={id} />
     );
 }
 
