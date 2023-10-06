@@ -5,7 +5,9 @@ import { useSelector } from "react-redux";
 const ProductDetailPage = ({ productID }) => {
     const selectedProduct = useSelector(state =>
         state.products.products.find(product => product.id === productID*1)
-      );
+        );
+        
+        // console.log("this is attributes :",selectedProduct.attributes[0]);
 
       const discount_percentage = ((selectedProduct.regular_price - selectedProduct.discount_price)/selectedProduct.regular_price)*100
 
@@ -69,40 +71,16 @@ const ProductDetailPage = ({ productID }) => {
                     </div>
                 </div>
             </div >
-            <section className="flex-grow">
-                <h2 className="uppercase tracking-wide text-xl font-semibold text-gray-700 my-4">
-                    Product Information
-                </h2>
-                <div className="mb-3 bg-white shadow-lg rounded text-gray-600 p-4">
-                    
-                <label className="flex border-b border-gray-200 h-12 py-3 items-center">
-                            <span className="text-right font-bold px-10">Brand</span>
-                            <div>...</div>
-                </label>
-                <label className="flex border-b border-gray-200 h-12 py-3 items-center">
-                            <span className="text-right font-bold px-10">Sizes</span>
-                            <div>...</div>
-                </label>
-               
-                <label className="flex border-b border-gray-200 h-12 py-3 items-center">
-                            <span className="text-right font-bold px-10">Weight </span>
-                            <div>...</div>
-                </label>
-               
-                <label className="flex border-b border-gray-200 h-12 py-3 items-center">
-                            <span className="text-right font-bold px-10">Dimension</span>
-                            <div>...</div>
-                </label>
-                </div>
-                {/* {selectedProduct?.attrubute.map(attrubute => (
-                    <fieldset key={attrubute.id} className="mb-3 bg-white shadow-lg rounded text-gray-600">
+            {/* <section >
+                {selectedProduct?.attrubute.map(atr => (
+                    <fieldset key={atr.id} className="mb-3 bg-white shadow-lg rounded text-gray-600">
                         <label className="flex border-b border-gray-200 h-12 py-3 items-center">
-                            <span className="text-right px-10">{attrubute.attrubute}</span>
-                            <div>{attrubute.variant}</div>
+                            <span className="text-right px-10">{atr.attrubute}</span>
+                            <div>{atr.variant}</div>
                         </label>
                     </fieldset>
-                ))} */}
-            </section>
+                ))}
+            </section> */}
         </div >
     );
 }

@@ -40,7 +40,7 @@ class ProductSpecification(models.Model):
 
 class ProductAttributes(models.Model):
 
-    attrubute = models.ForeignKey(Attribute, default=None, blank=True,
+    attributes = models.ForeignKey(Attribute, default=None, blank=True,
                                   null=True, related_name="product_attrubute", on_delete=models.CASCADE)
     variant = models.ForeignKey(
         AttributeValue, related_name="product_attrubute_variant", on_delete=models.CASCADE)
@@ -74,7 +74,7 @@ class Product(models.Model):
     })
     is_active = models.BooleanField(default=True)
     is_featured = models.BooleanField(default=True)
-    # total_stock = models.IntegerField(default=10)
+    total_stock = models.IntegerField(default=10)
     # image = models.ImageField(upload_to='product-images', default=None)
     created_at = models.DateTimeField(auto_now_add=True, editable=False)
     updated_at = models.DateTimeField(auto_now=True)
