@@ -11,7 +11,9 @@ import { useDispatch, useSelector } from 'react-redux';
 
 const ProductCard = ({ product }) => {
     const dispatch = useDispatch()
-    const moveToCart = () => dispatch(addToCart(1))
+    const moveToCart = () =>{
+        dispatch(addToCart(product))
+    } 
     const { slug } = product
     const PRODUCT_URL = 'products/' + slug
 

@@ -5,11 +5,11 @@ import productsReducer from './modules/product'
 
 import { cartReducer } from './modules/cartReducer'
 
-let initialState = {
-    cart: {
-      cartItems: typeof localStorage !== "undefined" ? (localStorage.getItem("cartItems") ? JSON.parse(localStorage.getItem("cartItems")) : []) : []
-    }
-  };
+// let initialState = {
+//     cart: {
+//       cartItems: typeof localStorage !== "undefined" ? (localStorage.getItem("cartItems") ? JSON.parse(localStorage.getItem("cartItems")) : []) : []
+//     }
+//   };
 
   
 export const store = configureStore({
@@ -17,8 +17,8 @@ export const store = configureStore({
         'auth': authReducer,
         'common': commonReducer,
         'products': productsReducer,
-        'cart' : cartReducer,
+        // 'cart' : cartReducer,
     },
-    preloadedState: initialState, // Initialize the store with the initial state
+    // preloadedState: initialState, // Initialize the store with the initial state
 
 })

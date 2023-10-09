@@ -1,17 +1,25 @@
 import Link from "next/link";
 import CartItem from "Components/Cart/CartItem";
 import { useDispatch, useSelector } from "react-redux";
-import { applyFilter } from "store/modules/product";
+import React from "react";
+import { resetCart } from "store/modules/product";  // Import your resetCart action
 
 
 const CartPage = () => {
     
     // // const crt = useSelector(state => state.cart)
     // // console.log(crt)'
+    // console.log("here is cart:" , carts[0].product_images[0].image)
+    const dispatch = useDispatch()
+    const carts = useSelector(state => state.products.carts);    
 
-    const cartItems = useSelector(state => state.cart.cartItems);
+    const totalCartPrice = carts.reduce((total, item) => total + item.regular_price * 1 , 0);
     
-    console.log("here is cart:" , cartItems)
+    const  checkOutHandler = () =>{
+       dispatch(resetCart());
+       window.location.reload();
+       console.log( "reload")
+    }
 
     return (
         <div className=" h-screen bg-gray-300">
@@ -24,7 +32,16 @@ const CartPage = () => {
                             <h1 className="text-2xl font-medium ">
                                 Shopping Cart
                             </h1>
-                            <CartItem />
+                            {carts.length > 0 ? (
+                            <div>
+                                {carts.map((item) => (
+                                <CartItem img={item.product_images[0].image} name={item.product_type.name} price={item.regular_price} />
+                                ))}
+                            </div>
+                            ) : (
+                            <p>Your cart is empty.</p>
+                            )}
+
                             <div className="flex justify-between items-center mt-6 pt-6 border-t">
                                 <div className="flex items-center">
                                     <Link href="/products">
@@ -45,11 +62,11 @@ const CartPage = () => {
                                 <div className="flex items-center">
                                 </div>
                                 <div className="flex justify-center items-end">
-                                    <button className="h-12 w-full bg-yellow-500 rounded focus:outline-none text-black hover:bg-yellow-600 px-4">
+                                    <button className="h-12 w-full bg-yellow-500 rounded focus:outline-none text-black hover:bg-yellow-600 px-4" onClick={checkOutHandler}>
                                         Check Out
                                     </button>
                                     <span className="text-sm font-medium text-gray-400 mr-1">Subtotal: </span>
-                                    <span className="text-lg font-bold text-gray-800 "> $24.90</span>
+                                    <span className="text-lg font-bold text-gray-800 ">${totalCartPrice}</span>
                                 </div>
                             </div>
 
@@ -67,8 +84,8 @@ const CartPage = () => {
                                             <span className="text-xs text-gray-200 font-medium">****</span>
                                         </div>
                                         <div className="flex justify-between items-center mt-3">
-                                            <span className="text-xs text-gray-200">Giga Tamarashvili</span>
-                                            <span className="text-xs text-gray-200">12/18</span>
+                                            <span className="text-xs text-gray-200">--------</span>
+                                            <span className="text-xs text-gray-200">--/--</span>
                                         </div>
                                     </div>
                                     <div className="flex justify-center items-center flex-col">
@@ -78,7 +95,7 @@ const CartPage = () => {
                                 </div>
                                 <div className="flex justify-center flex-col pt-3">
                                     <label className="text-xs text-gray-400 ">Name on Card</label>
-                                    <input type="text" className="focus:outline-none w-full h-6 bg-gray-800 text-white placeholder-gray-300 text-sm border-b border-gray-600 py-4" placeholder="Giga Tamarashvili" />
+                                    <input type="text" className="focus:outline-none w-full h-6 bg-gray-800 text-white placeholder-gray-300 text-sm border-b border-gray-600 py-4" placeholder="haroon" />
                                 </div>
                                 <div className="flex justify-center flex-col pt-3">
                                     <label className="text-xs text-gray-400 ">Card Number</label>
@@ -97,7 +114,7 @@ const CartPage = () => {
                                         <input type="text" className="focus:outline-none w-full h-6 bg-gray-800 text-white placeholder-gray-300 text-sm border-b border-gray-600 py-4" placeholder="XXX" />
                                     </div>
                                 </div>
-                                <button className="h-12 w-full bg-blue-500 rounded focus:outline-none text-white hover:bg-blue-600">Check Out</button>
+                                <button className="h-12 w-full bg-blue-500 rounded focus:outline-none text-white hover:bg-blue-600" >Check Out</button>
                             </div>
                     </div>
                 </div>

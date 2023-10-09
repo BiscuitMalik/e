@@ -12,9 +12,9 @@ from rest_framework.authentication import TokenAuthentication
 
 class CartListCreateView(ListCreateAPIView):
     queryset = Cart.objects.all()
-    # authentication_classes = [TokenAuthentication]
+    authentication_classes = [TokenAuthentication]
     serializer_class = CartSerializer
-    # permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated]
 
 
 
@@ -22,7 +22,7 @@ class CartAPIView(CartTokenMixin, APIView):
 
     token_param = "token"
     cart = None
-    # authentication_classes = [TokenAuthentication ,]
+    authentication_classes = [TokenAuthentication ,]
 
     def get_cart(self):
         (data, cart_data, response_status) = self.get_cart_from_token()

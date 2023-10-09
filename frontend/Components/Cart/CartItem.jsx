@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const CartItem = () => {
+const CartItem = ( props ) => {
   const [quantity, setQuantity] = useState(1);
 
   const handleIncrement = () => {
@@ -16,9 +16,9 @@ const CartItem = () => {
   return (
     <div className="flex md:grid md:grid-cols-3 gap-2 justify-between items-center mt-6 pt-6 border-t">
       <div className="flex items-center">
-        <img src="https://i.imgur.com/EEguU02.jpg" width="60" className="rounded-full" />
+        <img src={props.img} width="60" className="rounded-full" />
         <div className="flex flex-col ml-3">
-          <span className="md:text-md font-medium">Chicken momo</span>
+          <span className="md:text-md font-medium">{props.name}</span>
           <span className="text-xs font-light text-gray-400">#41551</span>
         </div>
       </div>
@@ -34,7 +34,7 @@ const CartItem = () => {
           <button onClick={handleIncrement} className="font-semibold text-xl">+</button>
         </div>
         <div className="pr-8">
-          <span className="text-md font-medium">${10.50 *  quantity}</span>
+          <span className="text-md font-medium">${props.price *  quantity}</span>
         </div>
         <div>
           <i className="fa fa-close text-xs font-medium"></i>

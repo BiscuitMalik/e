@@ -24,8 +24,16 @@ export const productSlice = createSlice({
             state.filters = { ...state.filters, [name]: value }
         },
         addToCart: (state, action) => {
-            state.cartCounter += action.payload
-        }
+            // Increment the cartCounter by 1
+            state.cartCounter += 1;
+      
+            // Add the payload (an object) to the carts array
+            state.carts.push(action.payload);
+          },
+        resetCart: (state) => {
+        state.cartCounter = 0;
+        state.carts = [];
+        },
     },
     extraReducers: {
         [fetchProducts.fulfilled]: (state, action) => {
