@@ -12,7 +12,7 @@ const FeatureProducts = () => {
     useEffect(() => {
         setFeatured(getFeaturedProducts(products).slice(0, 6))
     }, [products])
-
+    
     return (
         <section className=" bg-gray-100 section py-14">
             <SectionTitle title="featured products" />

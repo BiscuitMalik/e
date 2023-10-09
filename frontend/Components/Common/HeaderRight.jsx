@@ -30,11 +30,11 @@ const HeaderRight = () => {
             {accessToken
                 ? (
                     <>
-                        {/* <Link href='/user/profile' >
+                        <Link href='/user/profile' >
                             <a className="text-black-600 mx-2 sm:mx-4 capitalize tracking-wide hover:text-orange-500 transition-all" >
                                 My Profile
                             </a>
-                        </Link > */}
+                        </Link >
                         <MyAccountPopover />
                         <button
                             className="text-black-600 mx-1 sm:mx-1 capitalize tracking-wide hover:text-orange-500 transition-all"

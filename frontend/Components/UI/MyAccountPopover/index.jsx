@@ -5,7 +5,7 @@ function Index() {
         <>
             {/* Code block starts */}
             <div id="popover" className="transition duration-150 ease-in-out -mt-16 absolute top-0 left-0 ml-20 w-full sm:w-1/2">
-                <div className="w-full bg-white rounded shadow-2xl">
+                {/* <div className="w-full bg-white rounded shadow-2xl">
 
                     <div className="w-full h-full px-4 xl:px-8 py-5">
 
@@ -61,7 +61,7 @@ function Index() {
                             <hr className="my-5 border border-gray-200" />
                         </div>
                     </div>
-                </div>
+                </div> */}
             </div>
             {/* Code block ends */}
         </>

@@ -1,7 +1,18 @@
 import Link from "next/link";
 import CartItem from "Components/Cart/CartItem";
+import { useDispatch, useSelector } from "react-redux";
+import { applyFilter } from "store/modules/product";
+
 
 const CartPage = () => {
+    
+    // // const crt = useSelector(state => state.cart)
+    // // console.log(crt)'
+
+    const cartItems = useSelector(state => state.cart.cartItems);
+    
+    console.log("here is cart:" , cartItems)
+
     return (
         <div className=" h-screen bg-gray-300">
          <div className="py-12">

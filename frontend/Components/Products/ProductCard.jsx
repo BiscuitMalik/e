@@ -3,14 +3,20 @@ import BuyNow from 'Components/UI/BuyNow';
 import ViewHereBtn from 'Components/UI/ViewHereBtn';
 import Image from 'next/image'
 import Link from 'next/link'
-import { useDispatch } from 'react-redux';
+// import { useDispatch } from 'react-redux';
 import { addToCart } from "store/modules/product";
+
+import { useDispatch, useSelector } from 'react-redux';
+
 
 const ProductCard = ({ product }) => {
     const dispatch = useDispatch()
     const moveToCart = () => dispatch(addToCart(1))
     const { slug } = product
     const PRODUCT_URL = 'products/' + slug
+
+    // const cart = useSelector(state => state.cart); // Assuming 'cart' is the slice of state containing cart data
+    // console.log('Cart Data:', cart);
 
     return (
         <div className="max-w-lg mx-auto">
@@ -47,7 +53,7 @@ const ProductCard = ({ product }) => {
                         <span className="text-xs text-green-600"> {product.regular_price}</span>
                     </p>
                     <div className="px-5 py-2 flex flex-shrink grid-column justify-evenly gap-2 items-center">
-                        <AddToCartButton moveToCart={moveToCart} />
+                        <AddToCartButton moveToCart={moveToCart}/>
                         <BuyNow />
                         <ViewHereBtn name={product.name} image={product.product_images[0].image} price={product.regular_price}  />
                     </div>
