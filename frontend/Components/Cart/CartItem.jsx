@@ -1,14 +1,19 @@
 import React, { useState } from 'react';
-
+import { useDispatch } from 'react-redux';
+import { incrementItemCount , decrementItemCount } from 'store/modules/product';
 const CartItem = ( props ) => {
-  const [quantity, setQuantity] = useState(1);
 
+  const [quantity, setQuantity] = useState(props.count);
+  const dispatch = useDispatch()
   const handleIncrement = () => {
+    dispatch(incrementItemCount(props.id))
     setQuantity(quantity + 1);
+    
   };
 
   const handleDecrement = () => {
     if (quantity > 1) {
+      dispatch( decrementItemCount(props.id))
       setQuantity(quantity - 1);
     }
   };

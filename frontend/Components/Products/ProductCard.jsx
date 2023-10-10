@@ -3,22 +3,30 @@ import BuyNow from 'Components/UI/BuyNow';
 import ViewHereBtn from 'Components/UI/ViewHereBtn';
 import Image from 'next/image'
 import Link from 'next/link'
-// import { useDispatch } from 'react-redux';
 import { addToCart } from "store/modules/product";
+import { useToasts } from 'react-toast-notifications';
 
 import { useDispatch, useSelector } from 'react-redux';
-
-
 const ProductCard = ({ product }) => {
     const dispatch = useDispatch()
-    const moveToCart = () =>{
-        dispatch(addToCart(product))
-    } 
+    const carts =useSelector(state => state.products.carts)
+    const {addToast} = useToasts()
+    const checkSameItem = () => {
+        return carts.some((cartItem) => cartItem.item.id === product.id);
+    };
+
+    const moveToCart = () => {
+    const itemExistsInCart = checkSameItem();
+
+    if (carts.length > 0 && itemExistsInCart) 
+        addToast("Already addded" ,{appearance :"error" ,autoDismiss:true})
+    else 
+    dispatch(addToCart({ item: product, count: 1 }));
+        
+    };
+       
     const { slug } = product
     const PRODUCT_URL = 'products/' + slug
-
-    // const cart = useSelector(state => state.cart); // Assuming 'cart' is the slice of state containing cart data
-    // console.log('Cart Data:', cart);
 
     return (
         <div className="max-w-lg mx-auto">

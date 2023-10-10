@@ -3,24 +3,32 @@ import CartItem from "Components/Cart/CartItem";
 import { useDispatch, useSelector } from "react-redux";
 import React from "react";
 import { resetCart } from "store/modules/product";  // Import your resetCart action
-
+import { useToasts } from "react-toast-notifications";
 
 const CartPage = () => {
     
     // // const crt = useSelector(state => state.cart)
     // // console.log(crt)'
     // console.log("here is cart:" , carts[0].product_images[0].image)
-    const dispatch = useDispatch()
-    const carts = useSelector(state => state.products.carts);    
 
-    const totalCartPrice = carts.reduce((total, item) => total + item.regular_price * 1 , 0);
+    const dispatch = useDispatch()
+    const carts = useSelector(state => state.products.carts);   
+    const {addToast} = useToasts()
+    
+    const totalCartPrice = carts.reduce((total, items) => total + items.item.regular_price * items.count , 0);
     
     const  checkOutHandler = () =>{
-       dispatch(resetCart());
-       window.location.reload();
-       console.log( "reload")
+        
+        if (carts.length >0){
+            dispatch(resetCart());
+            addToast("Checkout Successfuly", { appearance: 'success', autoDismiss: true })
+        }
+        else{
+            addToast("No data in Cart", { appearance: 'error', autoDismiss: true })
+        }
     }
 
+        console.log(carts)
     return (
         <div className=" h-screen bg-gray-300">
          <div className="py-12">
@@ -34,8 +42,8 @@ const CartPage = () => {
                             </h1>
                             {carts.length > 0 ? (
                             <div>
-                                {carts.map((item) => (
-                                <CartItem img={item.product_images[0].image} name={item.product_type.name} price={item.regular_price} />
+                                {carts.map((items) => (
+                                <CartItem img={items.item.product_images[0].image} name={items.item.product_type.name} price={items.item.regular_price} count= {items.count} id={items.item.id} />
                                 ))}
                             </div>
                             ) : (
