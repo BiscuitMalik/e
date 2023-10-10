@@ -1,29 +1,24 @@
-import Image from 'next/image'
-import { useState } from 'react';
+import Image from "next/image";
+import { useState } from "react";
 const ProductDetailImages = ({ product }) => {
+  const { product_images } = product;
+  const [defaultImage, setDefaultImage] = useState(product_images[0]);
 
-    const { product_images } = product
-    const [defaultImage, setDefaultImage] = useState(product_images[0])
-
-    console.log('product_images::', defaultImage);
-    return (
-        <div className="md:flex-1 px-4">
-            <div className="h-64 md:h-80 rounded-lg bg-gray-100 mb-4">
-                <div className="h-64 md:h-80 rounded-lg bg-gray-100 mb-4 flex items-center justify-center">
-                    <span className="text-5xl">
-                        <img
-                            alt={defaultImage.alt_text}
-                            src={defaultImage.image}
-                        />
-                        {/* <Image
+  return (
+    <div className="md:flex-1 px-4">
+      <div className="h-64 md:h-80 rounded-lg bg-gray-100 mb-4">
+        <div className="h-64 md:h-80 rounded-lg bg-gray-100 mb-4 flex items-center justify-center">
+          <span className="text-5xl">
+            <img alt={defaultImage.alt_text} src={defaultImage.image} />
+            {/* <Image
                             width="100%" height="100%" layout="responsive"
                             src={defaultImage.image}
                             alt={defaultImage.alt_text}
                         /> */}
-                    </span>
-                </div>
-            </div>
-            {/* <div x-data="{ image: 1 }" x-cloak>
+          </span>
+        </div>
+      </div>
+      {/* <div x-data="{ image: 1 }" x-cloak>
                 <div className="h-64 md:h-80 rounded-lg bg-gray-100 mb-4">
                     <div x-show="image === 1" className="h-64 md:h-80 rounded-lg bg-gray-100 mb-4 flex items-center justify-center">
                         <span className="text-5xl">1</span>
@@ -52,8 +47,8 @@ const ProductDetailImages = ({ product }) => {
             </template>
         </div>
         </div > */}
-        </div >
-    );
-}
+    </div>
+  );
+};
 
 export default ProductDetailImages;

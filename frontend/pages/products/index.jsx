@@ -8,7 +8,7 @@ const Products = () => {
             <div className="grid grid-cols-4 gap-4">
                 <ProductFilters />
                 <div className="bg-red-200 col-span-3 rounded-xl">
-                    <FilteredProducts  />
+                    <FilteredProducts />
                 </div>
             </div>
         </div>
