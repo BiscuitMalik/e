@@ -11,11 +11,10 @@ const ProductDetailPage = ({ productID }) => {
   useEffect(() => {
     if (selectedProduct == undefined) {
       selectedProduct = JSON.parse(localStorage.getItem("my_prod"));
-    }else{
-      localStorage.setItem('my_prod', JSON.stringify(selectedProduct))
+    } else {
+      localStorage.setItem("my_prod", JSON.stringify(selectedProduct));
     }
   }, []);
-
 
   const discount_percentage =
     ((selectedProduct?.regular_price - selectedProduct?.discount_price) /
