@@ -6,7 +6,6 @@ const NavTitle = () => {
       <Link href="/">
         <a>
           <img className="h-8 w-auto" src="/basket-color-icon.png" alt="logo" />
-          LOGO
         </a>
       </Link>
     </div>
